@@ -274,6 +274,29 @@ int main(void) {
         send_report_raw();
         delay_ms_usb(500);
     }
+    // press l+r to select controller
+    hid_press(BTN_L);
+    hid_press(BTN_R);
+    push_report();
+    delay_ms_usb(100); // hold a little bit
+
+    // release L+R
+    hid_release(BTN_L);
+    hid_release(BTN_R);
+    push_report();
+
+    delay_ms_usb(200);
+
+    // press A
+    hid_press(BTN_A);
+    push_report();
+    delay_ms_usb(100); // Hold briefly
+
+    // release A
+    hid_release(BTN_A);
+    push_report();
+
+    delay_ms_usb(200);
 
     const uint8_t *ptr = flash_contents;
 
